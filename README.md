@@ -23,6 +23,13 @@ Module to extract text from an image
     </strong> 
   </li>  
 </ul>  
+<ul>
+  <li>
+    <strong>
+      <a href="https://pypi.org/project/PIL/">PIL</a>
+    </strong> 
+  </li>  
+</ul>  
 
 <h2>License</h2>
 
