@@ -41,6 +41,16 @@ import pyocr.builders
     Obtengo el modulo que fueron invocados
 """
 
+class Builder(TextBuilder):
+    def __init__(self, **kwargs):
+        psm = "3"
+        if "psm" in kwargs:
+            if kwargs["psm"] is not None: psm = kwargs["psm"]
+            del kwargs["psm"]
+        super().__init__(**kwargs)
+        self.tesseract_configs = ['--oem', '3', '--psm', psm]
+          
+          
 module = GetParams("module")
 
 if module == "gettext":
@@ -53,21 +63,18 @@ if module == "gettext":
         img = Image.open(image)
         w,h = img.size
         if w<= 200 or h <= 50:
-            img = img.resize((w*10, h*10))
+            print("Scaling...")
+            factor = min(1, float(1024.0 / w))
+            size = int(factor * w), int(factor * h)
+            img = img.resize(size)
+        # img = improve_image(image)
         tool = pyocr.get_available_tools()[0]
         lang = tool.get_available_languages()[0]
-        # print(lang)
-        # print(pyocr.tesseract.psm_parameter())
-        # print("*", pyocr.builders.TextBuilder())
-        text = tool.image_to_string(
-            img,
-            lang=lang,
-            builder=pyocr.builders.TextBuilder()
-        )
+    
+        text = tool.image_to_string(img,lang=lang, builder=Builder(psm=psm))
 
         if result:
             SetVar(result, text)
-
 
     except Exception as e:
         PrintException()
