@@ -35,7 +35,8 @@ sys.path.append(cur_path)
 
 import pyocr
 import pyocr.tesseract
-import pyocr.builders
+from pyocr.builders import TextBuilder
+from pyocr.error import TesseractError
 
 """
     Obtengo el modulo que fueron invocados
