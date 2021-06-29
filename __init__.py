@@ -58,6 +58,7 @@ if module == "gettext":
 
     image = GetParams("image")
     result = GetParams("result")
+    psm = GetParams("psm")
 
     try:
         pyocr.tesseract.TESSERACT_CMD = os.path.join(base_path,  'modules', 'OCR_Tesseract', 'Tesseract-OCR', 'tesseract.exe')
