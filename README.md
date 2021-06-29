@@ -1,6 +1,8 @@
 # OCR_Tesseract
 Module to extract text from an image
 
+- psm options: https://stackoverflow.com/a/44632770/12263957
+
 ![alt text](https://raw.githubusercontent.com/rocketbot-cl/OCR_Tesseract/master/example/ocr1.png)
 
 ![alt text](https://raw.githubusercontent.com/rocketbot-cl/OCR_Tesseract/master/example/test.png)
