@@ -25,18 +25,26 @@ Para instalar librerias se debe ingresar por terminal a la carpeta "libs"
 """
 
 import os
+import sys
 from PIL import Image
 
-base_path = tmp_global_obj["basepath"]
+SetVar = SetVar # type: ignore
+GetParams = GetParams # type: ignore
+PrintException = PrintException # type: ignore
+
+base_path = tmp_global_obj["basepath"] # type: ignore
 cur_path = os.path.join(base_path, 'modules', 'OCR_Tesseract', 'libs')
 sys.path.append(cur_path)
 cur_path = os.path.join(base_path, 'modules', 'OCR_Tesseract', 'tesseract')
 sys.path.append(cur_path)
 
-import pyocr
-import pyocr.tesseract
-from pyocr.builders import TextBuilder
-from pyocr.error import TesseractError
+import pyocr # type: ignore
+import pyocr.tesseract # type: ignore
+from pyocr.builders import TextBuilder # type: ignore # type: ignore
+from pyocr.tesseract import CharBoxBuilder # type: ignore
+
+# print ocr lib version
+print("pyocr.tesseract.get_version():", pyocr.tesseract.get_version())
 
 """
     Obtengo el modulo que fueron invocados
@@ -72,11 +80,39 @@ if module == "gettext":
         # img = improve_image(image)
         tool = pyocr.get_available_tools()[0]
         lang = tool.get_available_languages()[0]
-    
+
         text = tool.image_to_string(img,lang=lang, builder=Builder(psm=psm))
 
         if result:
             SetVar(result, text)
+
+    except Exception as e:
+        PrintException()
+        raise e
+    
+if module == "get_charboxes":
+    image = GetParams("image")
+    result = GetParams("result")
+
+    try:
+        img = Image.open(image)
+        w,h = img.size
+        if w<= 200 or h <= 50:
+            print("Scaling...")
+            factor = min(1, float(1024.0 / w))
+            size = int(factor * w), int(factor * h)
+            img = img.resize(size)
+        # img = improve_image(image)
+        tool = pyocr.get_available_tools()[0]
+        lang = tool.get_available_languages()[0]
+
+        boxes = []
+        # get each character box
+        for box in tool.image_to_string(img, lang=lang, builder=CharBoxBuilder()):
+            boxes.append([box.content, box.position])
+
+        if result:
+            SetVar(result, boxes)
 
     except Exception as e:
         PrintException()

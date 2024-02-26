@@ -1,42 +1,36 @@
-# OCR_Tesseract
-Module to extract text from an image
+# OCR Offline Tesseract
+  
+Module to extract text from an image  
 
-- psm options: https://stackoverflow.com/a/44632770/12263957
+*Read this in other languages: [English](README.md), [Português](README.pr.md), [Español](README.es.md)*
 
-![alt text](https://raw.githubusercontent.com/rocketbot-cl/OCR_Tesseract/master/example/ocr1.png)
+## How to install this module
+  
+To install the module in Rocketbot Studio, it can be done in two ways:
+1. Manual: __Download__ the .zip file and unzip it in the modules folder. The folder name must be the same as the module and inside it must have the following files and folders: \__init__.py, package.json, docs, example and libs. If you have the application open, refresh your browser to be able to use the new module.
+2. Automatic: When entering Rocketbot Studio on the right margin you will find the **Addons** section, select **Install Mods**, search for the desired module and press install.  
 
-![alt text](https://raw.githubusercontent.com/rocketbot-cl/OCR_Tesseract/master/example/test.png)
 
-![alt text](https://raw.githubusercontent.com/rocketbot-cl/OCR_Tesseract/master/example/ocr2.png)
+## Overview
 
-<h2>Dependencies</h2>
 
-<ul>
-  <li>
-    <strong>
-      <a href="https://github.com/tesseract-ocr/tesseract">Tesseract OCR</a>
-    </strong> 
-  </li>  
-</ul>  
-<ul>
-  <li>
-    <strong>
-      <a href="https://pypi.org/project/pyocr/">pyocr</a>
-    </strong> 
-  </li>  
-</ul>  
-<ul>
-  <li>
-    <strong>
-      <a href="https://pypi.org/project/PIL/">PIL</a>
-    </strong> 
-  </li>  
-</ul>  
+1. Convert image to text  
+Convert an image to text
 
-<h2>License</h2>
+2. Get character boxes  
+Get character boxes from an image  
 
-<p><a href="http://badges.mit-license.org" rel="nofollow"><img src="https://camo.githubusercontent.com/107590fac8cbd65071396bb4d04040f76cde5bde/687474703a2f2f696d672e736869656c64732e696f2f3a6c6963656e73652d6d69742d626c75652e7376673f7374796c653d666c61742d737175617265" alt="License" data-canonical-src="http://img.shields.io/:license-mit-blue.svg?style=flat-square" style="max-width:100%;"></a></p>
 
-<ul>
-  <li><strong><a href="http://opensource.org/licenses/mit-license.php" rel="nofollow">MIT license</a></strong></li>
-</ul>  
+
+
+----
+### OS
+
+- windows
+
+### Dependencies
+- [**PIL**](https://pypi.org/project/PIL/)- [**pyocr**](https://pypi.org/project/pyocr/)
+### License
+  
+![MIT](https://camo.githubusercontent.com/107590fac8cbd65071396bb4d04040f76cde5bde/687474703a2f2f696d672e736869656c64732e696f2f3a6c6963656e73652d6d69742d626c75652e7376673f7374796c653d666c61742d737175617265)  
+[MIT](http://opensource.org/licenses/mit-license.ph)
