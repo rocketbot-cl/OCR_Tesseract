@@ -44,9 +44,6 @@ try:
     from pyocr.builders import TextBuilder # type: ignore # type: ignore
     from pyocr.tesseract import CharBoxBuilder # type: ignore
 
-    # print ocr lib version
-    print("pyocr.tesseract.get_version():", pyocr.tesseract.get_version())
-
     """
         Obtengo el modulo que fueron invocados
     """
